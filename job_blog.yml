@@ -1,0 +1,18 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+display_name: blog_model_test
+
+outputs:
+  model_output: 
+    type: mlflow_model
+    mode: rw_mount
+  model_output2:
+    type: mlflow_model
+    mode: rw_mount
+code: script
+environment: azureml:hummingbird_env@latest
+compute: azureml:gpu-cluster
+command:
+  python blog_example.py 
+ 
+ # >-
+  # echo "hello world" > ${{outputs.model_output}}/helloworld.txt 
